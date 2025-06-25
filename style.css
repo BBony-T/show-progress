@@ -29,14 +29,11 @@ body {
   color: var(--text);
   min-height: 100vh;
   padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 
 /*────────────────────────────────────────────────────────
-  A. 입력 페이지 (index.html)
+  A. 입력 페이지 (index.html) 스타일
 ────────────────────────────────────────────────────────*/
 .blob { position: absolute; opacity: 0.6; }
 .blob1 { width: 200px; height: 200px; background: var(--primary); border-radius: 60% 40% 70% 50%; top: -50px; left: -50px; }
@@ -56,7 +53,7 @@ body {
 button:hover { opacity: 0.9; }
 
 /*────────────────────────────────────────────────────────
-  B. 대시보드 페이지 (dashboard.html)
+  B. 대시보드 페이지 (dashboard.html) 스타일
 ────────────────────────────────────────────────────────*/
 body.dashboard { display: block; padding: 20px; overflow: auto; }
 body.dashboard > h1 { font-family: 'Jua', sans-serif; font-size: 3rem; text-align: center; color: #914f34; margin-bottom: 24px; }
@@ -68,25 +65,38 @@ body.dashboard > h1 { font-family: 'Jua', sans-serif; font-size: 3rem; text-alig
 .group-box .time { font-size: 0.75rem; color: #888; }
 
 /*────────────────────────────────────────────────────────
-  C. 업데이트 페이지 (update.html)
+  C. 업데이트 페이지 (update.html) 스타일
 ────────────────────────────────────────────────────────*/
-body.update-page { font-family: 'Nanum Gothic', sans-serif; background: var(--bg); color: var(--text); position: relative; height: 100vh; margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+body.update-page { font-family: 'Nanum Gothic', sans-serif; background: var(--bg); color: var(--text); position: relative; height: 100vh; margin: 0; padding: 0; overflow: hidden; }
 body.update-page .blob { position: absolute; opacity: 0.6; }
 body.update-page .blob1 { top: -50px; left: -50px; }
 body.update-page .blob2 { bottom: -80px; right: -60px; }
 body.update-page .blob3 { top: 20%; right: -80px; }
 
-/* wrapper 너비 수정: 화면 95%까지 허용 & 최대 600px */
-body.update-page > .wrapper { background: var(--white); border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); padding: 40px; width: 95vw; max-width: 600px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+/* wrapper 절대 위치로 완전 중앙 정렬 */
+body.update-page > .wrapper {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  padding: 40px;
+  width: 90%;
+  max-width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
 body.update-page > .wrapper h1 { font-family: 'Jua', sans-serif; font-size: 3.5rem; margin-bottom: 32px; color: var(--accent); }
 #buttons { display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 360px; margin: 0 auto; }
 #buttons button { font-family: 'Jua', sans-serif; font-size: 1.8rem; padding: 24px 0; border: none; border-radius: 12px; background: var(--primary); color: var(--white); cursor: pointer; transition: transform 0.2s, opacity 0.2s; width: 100%; }
 #buttons button:hover { transform: translateY(-2px); opacity: 0.9; }
-#buttons button[data-status="시작"]      { background: var(--secondary); color: var(--white); }
-#buttons button[data-status="토의중"]    { background: #FFF9C4; color: var(--text); }
-#buttons button[data-status="작업중"]    { background: #BBDEFB; color: var(--text); }
+#buttons button[data-status="시작"] { background: var(--secondary); color: var(--white); }
+#buttons button[data-status="토의중"] { background: #FFF9C4; color: var(--text); }
+#buttons button[data-status="작업중"] { background: #BBDEFB; color: var(--text); }
 #buttons button[data-status="도움 요청"] { background: #FFCDD2; color: var(--text); }
-#buttons button[data-status="완료"]      { background: #C8E6C9; color: var(--text); }
+#buttons button[data-status="완료"] { background: #C8E6C9; color: var(--text); }
 
 /*────────────────────────────────────────────────────────
   반응형
