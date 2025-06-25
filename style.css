@@ -219,21 +219,31 @@ body.update-page {
   background: var(--bg);
   color: var(--text);
   position: relative;
-  min-height: 100vh;
-  padding: 20px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
+body.update-page .blob {
+  position: absolute;
+  opacity: 0.6;
+}
+
+body.update-page .blob1 { top: -50px; left: -50px; }
+body.update-page .blob2 { bottom: -80px; right: -60px; }
+body.update-page .blob3 { top: 20%; right: -80px; }
+
 body.update-page > .wrapper {
   background: var(--white);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  padding: 30px;
-  width: 100%;
-  max-width: 480px;
+  padding: 40px;
+  width: 90vw;
+  max-width: none;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -241,7 +251,7 @@ body.update-page > .wrapper {
 
 body.update-page > .wrapper h1 {
   font-family: 'Jua', sans-serif;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   margin-bottom: 32px;
   color: var(--accent);
 }
@@ -249,7 +259,7 @@ body.update-page > .wrapper h1 {
 #buttons {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   width: 100%;
   max-width: 360px;
   margin: 0 auto;
@@ -257,14 +267,15 @@ body.update-page > .wrapper h1 {
 
 #buttons button {
   font-family: 'Jua', sans-serif;
-  font-size: 1.2rem;
-  padding: 16px 0;
+  font-size: 1.8rem;
+  padding: 24px 0;
   border: none;
   border-radius: 12px;
   background: var(--primary);
   color: var(--white);
   cursor: pointer;
   transition: transform 0.2s, opacity 0.2s;
+  width: 100%;
 }
 
 #buttons button:hover {
@@ -272,11 +283,11 @@ body.update-page > .wrapper h1 {
   opacity: 0.9;
 }
 
-#buttons button[data-status="시작"]       { background: var(--secondary); color: var(--white); }
-#buttons button[data-status="토의중"]     { background: #FFF9C4; color: var(--text); }
-#buttons button[data-status="작업중"]     { background: #BBDEFB; color: var(--text); }
-#buttons button[data-status="도움 요청"]  { background: #FFCDD2; color: var(--text); }
-#buttons button[data-status="완료"]       { background: #C8E6C9; color: var(--text); }
+#buttons button[data-status="시작"]      { background: var(--secondary); color: var(--white); }
+#buttons button[data-status="토의중"]    { background: #FFF9C4; color: var(--text); }
+#buttons button[data-status="작업중"]    { background: #BBDEFB; color: var(--text); }
+#buttons button[data-status="도움 요청"] { background: #FFCDD2; color: var(--text); }
+#buttons button[data-status="완료"]      { background: #C8E6C9; color: var(--text); }
 
 /*────────────────────────────────────────────────────────
   반응형
