@@ -27,14 +27,20 @@ body {
   font-family: 'Nanum Gothic', sans-serif;
   background: var(--bg);
   color: var(--text);
-  min-height: 100vh;
+  margin: 0;
   padding: 20px;
-  overflow: hidden;
 }
 
 /*────────────────────────────────────────────────────────
   A. 입력 페이지 (index.html) 스타일
 ────────────────────────────────────────────────────────*/
+body.index-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 .blob { position: absolute; opacity: 0.6; }
 .blob1 { width: 200px; height: 200px; background: var(--primary); border-radius: 60% 40% 70% 50%; top: -50px; left: -50px; }
 .blob2 { width: 250px; height: 250px; background: var(--secondary); border-radius: 50% 60% 30% 50%; bottom: -80px; right: -60px; }
@@ -47,7 +53,7 @@ body {
   padding: 30px;
   width: 100%;
   max-width: 480px;
-  margin: 0 auto;              /* index 페이지용 중앙 정렬 */
+  margin: 0 auto;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -128,9 +134,12 @@ button:hover { opacity: 0.9; }
   B. 대시보드 페이지 (dashboard.html) 스타일
 ────────────────────────────────────────────────────────*/
 body.dashboard {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   padding: 20px;
-  overflow: auto;
 }
 body.dashboard > h1 {
   font-family: 'Jua', sans-serif;
@@ -143,7 +152,6 @@ body.dashboard > h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
-  padding: 0;
   width: 100%;
   max-width: 960px;
   margin: 0 auto;

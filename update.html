@@ -6,17 +6,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="update-page">
-  <!-- 배경 장식 블롭 -->
+  <!-- 데코 블롭 -->
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
 
   <!-- 콘텐츠 래퍼 -->
   <div class="wrapper">
-    <!-- 동적으로 그룹 이름이 들어갑니다 -->
-    <h1 id="title">현황 알리기</h1>
+    <h1 id="title">
+      <span id="groupName"></span><br>
+      현황 알리기
+    </h1>
 
-    <!-- 상태 업데이트 버튼들 -->
     <div id="buttons">
       <button data-status="시작">🚀 시작</button>
       <button data-status="토의중">🤔 토의중</button>
@@ -32,7 +33,6 @@
 
   <!-- 업데이트 로직 -->
   <script>
-    // 1) Firebase 설정 (Firebase 콘솔에서 복사 후 붙여넣기)
     const firebaseConfig = {
       apiKey: "AIzaSyAbSdcxEwYSjQ4LjgNme29iJGVs_t6fxnQ",
       authDomain: "show-progress-bbony.firebaseapp.com",
@@ -42,20 +42,17 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database().ref('currentActivity');
 
-    // 2) URL에서 'group' 파라미터 추출 및 검증
     const params = new URLSearchParams(location.search);
     const group = params.get('group');
     if (!group) {
       alert('잘못된 접근입니다. 대시보드에서 QR코드를 스캔해 주세요.');
       throw new Error('Missing group parameter');
     }
-    document.getElementById('title').textContent = `${group} 현황 알리기`;
+    document.getElementById('groupName').textContent = group;
 
-    // 3) 버튼 클릭 시 실시간 상태 업데이트
     document.querySelectorAll('#buttons button').forEach(btn => {
       btn.addEventListener('click', () => {
         const status = btn.getAttribute('data-status');
-        console.log('🔘 클릭!', group, status);
         db.child(group).update({ status, lastUpdate: new Date().toISOString() })
           .then(() => console.log('✅ Firebase 업데이트 성공'))
           .catch(err => console.error('❌ Firebase 업데이트 실패', err));

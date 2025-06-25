@@ -5,13 +5,13 @@
   <title>모둠별 실시간 활동 현황판</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="index-page">
   <!-- 데코 블롭들 -->
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
 
-   <div class="wrapper">
+  <div class="wrapper">
     <h1>모둠별 실시간 활동 현황판</h1>
     <button id="refreshBtn">🔄 새로고침</button>
 
@@ -28,17 +28,15 @@
     </div>
   </div>
 
- <!-- 새로고침 기능 스크립트 -->
+  <!-- 새로고침 기능 스크립트 -->
   <script>
     document.getElementById('refreshBtn').addEventListener('click', () => {
-      // true를 주면 캐시된 리소스 대신 서버에서 다시 불러옵니다
       location.reload(true);
     });
   </script>
 
   <!-- 입력 페이지 전용 스크립트 -->
   <script>
-    // 모둠 추가
     document.getElementById('add-group').onclick = () => {
       const div = document.createElement('div');
       div.className = 'group-input';
@@ -49,20 +47,14 @@
       document.getElementById('groups-container').append(div);
       attachRemove(div.querySelector('.remove'));
     };
-
-    // 삭제 버튼에 이벤트 연결
-    function attachRemove(btn) {
-      btn.onclick = () => btn.parentElement.remove();
-    }
+    function attachRemove(btn) { btn.onclick = () => btn.parentElement.remove(); }
     document.querySelectorAll('.remove').forEach(attachRemove);
 
-    // ‘현황판 생성’ 클릭 시 모둠 이름 모아서 dashboard.html로 이동
     document.getElementById('create-dashboard').onclick = () => {
       const names = Array.from(
         document.querySelectorAll('#groups-container input')
       ).map(i => i.value.trim()).filter(v=>v);
       if (!names.length) return alert('모둠 이름을 하나 이상 입력하세요.');
-      // URL 파라미터로 전달 (쉼표로 구분)
       const param = encodeURIComponent(names.join(','));
       location.href = `dashboard.html?groups=${param}`;
     };
