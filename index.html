@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>새 활동 시작하기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>새 활동 시작하기</h1>
+
+  <div id="groups-container">
+    <!-- 기본 입력 칸 하나 -->
+    <div class="group-input">
+      <input type="text" placeholder="모둠 이름 (예: 탐구조)">
+      <button class="remove">×</button>
+    </div>
+  </div>
+
+  <button id="add-group">+ 모둠 추가</button>
+  <button id="create-dashboard">현황판 생성</button>
+
+  <!-- 입력 페이지 전용 스크립트 -->
+  <script>
+    // 모둠 추가
+    document.getElementById('add-group').onclick = () => {
+      const div = document.createElement('div');
+      div.className = 'group-input';
+      div.innerHTML = `
+        <input type="text" placeholder="모둠 이름">
+        <button class="remove">×</button>
+      `;
+      document.getElementById('groups-container').append(div);
+      attachRemove(div.querySelector('.remove'));
+    };
+
+    // 삭제 버튼에 이벤트 연결
+    function attachRemove(btn) {
+      btn.onclick = () => btn.parentElement.remove();
+    }
+    document.querySelectorAll('.remove').forEach(attachRemove);
+
+    // ‘현황판 생성’ 클릭 시 모둠 이름 모아서 dashboard.html로 이동
+    document.getElementById('create-dashboard').onclick = () => {
+      const names = Array.from(
+        document.querySelectorAll('#groups-container input')
+      ).map(i => i.value.trim()).filter(v=>v);
+      if (!names.length) return alert('모둠 이름을 하나 이상 입력하세요.');
+      // URL 파라미터로 전달 (쉼표로 구분)
+      const param = encodeURIComponent(names.join(','));
+      location.href = `dashboard.html?groups=${param}`;
+    };
+  </script>
+</body>
+</html>

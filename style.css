@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+h1 {
+  margin-bottom: 20px;
+}
+#groups-container .group-input {
+  margin-bottom: 8px;
+}
+.group-input input {
+  padding: 6px;
+  width: 200px;
+}
+.group-input button.remove {
+  margin-left: 4px;
+}
+button {
+  padding: 8px 12px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+#dashboard { display: grid; gap: 16px; }
+.group-box {
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+.group-box h2 { margin: 0 0 8px; }
+.group-box .status { font-size: 1.4em; margin-bottom: 8px; }
+.group-box .time { font-size: 0.8em; color: rgba(255,255,255,0.8); }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>상태 업데이트</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="title">모둠 상태 업데이트</h1>
+  <div id="buttons">
+    <button data-status="토의중">🤔 토의중</button>
+    <button data-status="작업중">✍️ 작업중</button>
+    <button data-status="도움 요청">🙋‍♂️ 도움 요청!</button>
+    <button data-status="완료">🎉 완료</button>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <!-- 업데이트 로직 -->
+  <script src="update.js"></script>
+</body>
+</html>
