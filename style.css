@@ -1,5 +1,5 @@
 /*────────────────────────────────────────────────────────
-  style.css — 전체 스타일시트 (입력 페이지 + 대시보드)
+  style.css — 전체 스타일시트 (입력 페이지 + 대시보드 + 업데이트 페이지)
 ────────────────────────────────────────────────────────*/
 
 /* 1. 구글 폰트 불러오기 */
@@ -152,23 +152,20 @@ button:hover {
 /*────────────────────────────────────────────────────────
   B. 대시보드 페이지 (dashboard.html) 스타일
 ────────────────────────────────────────────────────────*/
-
 body.dashboard {
   display: block;
   padding: 20px;
   overflow: auto;
 }
 
-/* 제목 */
 body.dashboard > h1 {
   font-family: 'Jua', sans-serif;
-  font-size: 3rem; /* 더욱 크게 키움 */
+  font-size: 3rem;
   text-align: center;
-  color: #914f34; /* 제목 색상 변경 */
+  color: #914f34;
   margin-bottom: 24px;
 }
 
-/* 그리드 레이아웃 */
 #dashboard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -179,7 +176,6 @@ body.dashboard > h1 {
   margin: 0 auto;
 }
 
-/* 모둠 박스 */
 .group-box {
   background: var(--white);
   border: 1px solid var(--border-light);
@@ -190,17 +186,15 @@ body.dashboard > h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Jua', sans-serif; /* Jua 폰트 적용 */
+  font-family: 'Jua', sans-serif;
 }
 
-/* 모둠 이름 */
 .group-box h2 {
   margin: 0 0 8px;
   font-size: 1.1rem;
   color: #333;
 }
 
-/* 상태 */
 .group-box .status {
   font-size: 1.2rem;
   font-weight: bold;
@@ -208,16 +202,81 @@ body.dashboard > h1 {
   color: #555;
 }
 
-/* QR 코드 */
 .group-box .qr {
   margin: 8px 0;
 }
 
-/* 마지막 업데이트 시각 */
 .group-box .time {
   font-size: 0.75rem;
   color: #888;
 }
+
+/*────────────────────────────────────────────────────────
+  C. 업데이트 페이지 (update.html) 스타일
+────────────────────────────────────────────────────────*/
+body.update-page {
+  font-family: 'Nanum Gothic', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  position: relative;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+body.update-page > .wrapper {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+body.update-page > .wrapper h1 {
+  font-family: 'Jua', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 32px;
+  color: var(--accent);
+}
+
+#buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+#buttons button {
+  font-family: 'Jua', sans-serif;
+  font-size: 1.2rem;
+  padding: 16px 0;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: var(--white);
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+#buttons button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+#buttons button[data-status="시작"]       { background: var(--secondary); color: var(--white); }
+#buttons button[data-status="토의중"]     { background: #FFF9C4; color: var(--text); }
+#buttons button[data-status="작업중"]     { background: #BBDEFB; color: var(--text); }
+#buttons button[data-status="도움 요청"]  { background: #FFCDD2; color: var(--text); }
+#buttons button[data-status="완료"]       { background: #C8E6C9; color: var(--text); }
 
 /*────────────────────────────────────────────────────────
   반응형

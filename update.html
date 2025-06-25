@@ -2,23 +2,56 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>상태 업데이트</title>
+  <title>현황 알리기</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <h1 id="title">모둠 상태 업데이트</h1>
-  <div id="buttons">
-    <button data-status="토의중">🤔 토의중</button>
-    <button data-status="작업중">✍️ 작업중</button>
-    <button data-status="도움 요청">🙋‍♂️ 도움 요청!</button>
-    <button data-status="완료">🎉 완료</button>
+<body class="update-page">
+  <!-- 배경 장식 블롭 -->
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <!-- 콘텐츠 래퍼 -->
+  <div class="wrapper">
+    <!-- 동적으로 그룹 이름이 들어갑니다 -->
+    <h1 id="title">현황 알리기</h1>
+
+    <div id="buttons">
+      <button data-status="시작">🚀 시작</button>
+      <button data-status="토의중">🤔 토의중</button>
+      <button data-status="작업중">✍️ 작업중</button>
+      <button data-status="도움 요청">🙋‍♂️ 도움 요청!</button>
+      <button data-status="완료">🎉 완료</button>
+    </div>
   </div>
 
-  <!-- Firebase -->
+  <!-- Firebase & 업데이트 로직 -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script>
+    // Firebase 설정
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+      projectId: "YOUR_PROJECT_ID",
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database().ref('currentActivity');
 
-  <!-- 업데이트 로직 -->
-  <script src="update.js"></script>
+    // 그룹 이름 추출 및 제목 변경
+    const params = new URLSearchParams(location.search);
+    const group = params.get('group');
+    document.getElementById('title').textContent = `${group} 현황 알리기`;
+
+    // 버튼 클릭 이벤트
+    document.querySelectorAll('#buttons button').forEach(btn => {
+      btn.onclick = () => {
+        const status = btn.getAttribute('data-status');
+        db.child(group).update({ status, lastUpdate: new Date().toISOString() });
+        alert(`현황이 '${status}'로 변경되었습니다!`);
+      };
+    });
+  </script>
 </body>
 </html>
