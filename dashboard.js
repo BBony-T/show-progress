@@ -1,5 +1,12 @@
 // dashboard.js
-// 1) Firebase 설정 → https://console.firebase.google.com 에서 내 프로젝트 설정 후 복사해 넣으세요.
+
+// ❶ 페이지 강제 리로드(캐시 무시) 버튼
+document.getElementById('refreshBtn').addEventListener('click', () => {
+  // true를 주면 캐시된 리소스를 무시하고 서버에서 다시 불러옵니다.
+  location.reload(true);
+});
+
+// 1) Firebase 설정
 const firebaseConfig = {
   apiKey: "AIzaSyAbSdcxEwYSjQ4LjgNme29iJGVs_t6fxnQ",
   authDomain: "show-progress-bbony.firebaseapp.com",
