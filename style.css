@@ -36,254 +36,52 @@ body {
 }
 
 /*────────────────────────────────────────────────────────
-  A. 입력 페이지 (index.html) 스타일
+  A. 입력 페이지 (index.html)
 ────────────────────────────────────────────────────────*/
-.blob {
-  position: absolute;
-  opacity: 0.6;
-}
-.blob1 {
-  width: 200px; height: 200px;
-  background: var(--primary);
-  border-radius: 60% 40% 70% 50%;
-  top: -50px; left: -50px;
-}
-.blob2 {
-  width: 250px; height: 250px;
-  background: var(--secondary);
-  border-radius: 50% 60% 30% 50%;
-  bottom: -80px; right: -60px;
-}
-.blob3 {
-  width: 150px; height: 150px;
-  background: var(--accent);
-  border-radius: 40% 50% 60% 40%;
-  top: 20%; right: -80px;
-}
-
-.wrapper {
-  background: var(--white);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  padding: 30px;
-  width: 100%;
-  max-width: 480px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.wrapper h1 {
-  font-family: 'Jua', sans-serif;
-  font-size: 1.8rem;
-  margin-bottom: 16px;
-  color: var(--accent);
-}
-
-#refreshBtn {
-  background: var(--accent);
-  color: var(--white);
-  border: none;
-  border-radius: 8px;
-  padding: 8px 16px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  margin-bottom: 24px;
-  transition: transform 0.2s;
-}
-#refreshBtn:hover {
-  transform: translateY(-2px);
-}
-
-#groups-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-.group-input {
-  display: flex;
-  gap: 8px;
-}
-.group-input input {
-  flex: 1;
-  padding: 10px 12px;
-  border: 2px solid var(--accent);
-  border-radius: 8px;
-  font-size: 1rem;
-}
-.group-input button.remove {
-  background: var(--danger);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0 12px;
-  cursor: pointer;
-}
-
-.buttons {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-#add-group {
-  background: var(--secondary);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  cursor: pointer;
-  flex: 1;
-}
-#create-dashboard {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  cursor: pointer;
-  flex: 1;
-}
-
-button:hover {
-  opacity: 0.9;
-}
+.blob { position: absolute; opacity: 0.6; }
+.blob1 { width: 200px; height: 200px; background: var(--primary); border-radius: 60% 40% 70% 50%; top: -50px; left: -50px; }
+.blob2 { width: 250px; height: 250px; background: var(--secondary); border-radius: 50% 60% 30% 50%; bottom: -80px; right: -60px; }
+.blob3 { width: 150px; height: 150px; background: var(--accent); border-radius: 40% 50% 60% 40%; top: 20%; right: -80px; }
+.wrapper { background: var(--white); border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); padding: 30px; width: 100%; max-width: 480px; text-align: center; position: relative; z-index: 1; }
+.wrapper h1 { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 16px; color: var(--accent); }
+#refreshBtn { background: var(--accent); color: var(--white); border: none; border-radius: 8px; padding: 8px 16px; font-size: 0.9rem; cursor: pointer; margin-bottom: 24px; transition: transform 0.2s; }
+#refreshBtn:hover { transform: translateY(-2px); }
+#groups-container { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.group-input { display: flex; gap: 8px; }
+.group-input input { flex: 1; padding: 10px 12px; border: 2px solid var(--accent); border-radius: 8px; font-size: 1rem; }
+.group-input button.remove { background: var(--danger); color: #fff; border: none; border-radius: 8px; padding: 0 12px; cursor: pointer; }
+.buttons { display: flex; gap: 12px; justify-content: center; }
+#add-group { background: var(--secondary); color: #fff; border: none; border-radius: 8px; padding: 10px 16px; cursor: pointer; flex: 1; }
+#create-dashboard { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 10px 16px; cursor: pointer; flex: 1; }
+button:hover { opacity: 0.9; }
 
 /*────────────────────────────────────────────────────────
-  B. 대시보드 페이지 (dashboard.html) 스타일
+  B. 대시보드 페이지 (dashboard.html)
 ────────────────────────────────────────────────────────*/
-body.dashboard {
-  display: block;
-  padding: 20px;
-  overflow: auto;
-}
-
-body.dashboard > h1 {
-  font-family: 'Jua', sans-serif;
-  font-size: 3rem;
-  text-align: center;
-  color: #914f34;
-  margin-bottom: 24px;
-}
-
-#dashboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-  padding: 0;
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.group-box {
-  background: var(--white);
-  border: 1px solid var(--border-light);
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  padding: 16px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Jua', sans-serif;
-}
-
-.group-box h2 {
-  margin: 0 0 8px;
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.group-box .status {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #555;
-}
-
-.group-box .qr {
-  margin: 8px 0;
-}
-
-.group-box .time {
-  font-size: 0.75rem;
-  color: #888;
-}
+body.dashboard { display: block; padding: 20px; overflow: auto; }
+body.dashboard > h1 { font-family: 'Jua', sans-serif; font-size: 3rem; text-align: center; color: #914f34; margin-bottom: 24px; }
+#dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; padding: 0; width: 100%; max-width: 960px; margin: 0 auto; }
+.group-box { background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); padding: 16px; text-align: center; display: flex; flex-direction: column; align-items: center; font-family: 'Jua', sans-serif; }
+.group-box h2 { margin: 0 0 8px; font-size: 1.1rem; color: #333; }
+.group-box .status { font-size: 1.2rem; font-weight: bold; margin-bottom: 8px; color: #555; }
+.group-box .qr { margin: 8px 0; }
+.group-box .time { font-size: 0.75rem; color: #888; }
 
 /*────────────────────────────────────────────────────────
-  C. 업데이트 페이지 (update.html) 스타일
+  C. 업데이트 페이지 (update.html)
 ────────────────────────────────────────────────────────*/
-body.update-page {
-  font-family: 'Nanum Gothic', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  position: relative;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-body.update-page .blob {
-  position: absolute;
-  opacity: 0.6;
-}
-
+body.update-page { font-family: 'Nanum Gothic', sans-serif; background: var(--bg); color: var(--text); position: relative; height: 100vh; margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+body.update-page .blob { position: absolute; opacity: 0.6; }
 body.update-page .blob1 { top: -50px; left: -50px; }
 body.update-page .blob2 { bottom: -80px; right: -60px; }
 body.update-page .blob3 { top: 20%; right: -80px; }
 
-body.update-page > .wrapper {
-  background: var(--white);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  padding: 40px;
-  width: 90vw;
-  max-width: 480px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-body.update-page > .wrapper h1 {
-  font-family: 'Jua', sans-serif;
-  font-size: 3.5rem;
-  margin-bottom: 32px;
-  color: var(--accent);
-}
-
-#buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-}
-
-#buttons button {
-  font-family: 'Jua', sans-serif;
-  font-size: 1.8rem;
-  padding: 24px 0;
-  border: none;
-  border-radius: 12px;
-  background: var(--primary);
-  color: var(--white);
-  cursor: pointer;
-  transition: transform 0.2s, opacity 0.2s;
-  width: 100%;
-}
-
-#buttons button:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
+/* wrapper 너비 수정: 화면 95%까지 허용 & 최대 600px */
+body.update-page > .wrapper { background: var(--white); border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); padding: 40px; width: 95vw; max-width: 600px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+body.update-page > .wrapper h1 { font-family: 'Jua', sans-serif; font-size: 3.5rem; margin-bottom: 32px; color: var(--accent); }
+#buttons { display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 360px; margin: 0 auto; }
+#buttons button { font-family: 'Jua', sans-serif; font-size: 1.8rem; padding: 24px 0; border: none; border-radius: 12px; background: var(--primary); color: var(--white); cursor: pointer; transition: transform 0.2s, opacity 0.2s; width: 100%; }
+#buttons button:hover { transform: translateY(-2px); opacity: 0.9; }
 #buttons button[data-status="시작"]      { background: var(--secondary); color: var(--white); }
 #buttons button[data-status="토의중"]    { background: #FFF9C4; color: var(--text); }
 #buttons button[data-status="작업중"]    { background: #BBDEFB; color: var(--text); }
@@ -293,8 +91,4 @@ body.update-page > .wrapper h1 {
 /*────────────────────────────────────────────────────────
   반응형
 ────────────────────────────────────────────────────────*/
-@media (max-width: 400px) {
-  .blob2 { display: none; }
-  .wrapper { padding: 20px; }
-  .buttons { flex-direction: column; }
-}
+@media (max-width: 400px) { .blob2 { display: none; } .wrapper { padding: 20px; } .buttons { flex-direction: column; } }
