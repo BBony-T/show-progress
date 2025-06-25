@@ -1,33 +1,229 @@
+/*────────────────────────────────────────────────────────
+  style.css — 전체 스타일시트 (입력 페이지 + 대시보드)
+────────────────────────────────────────────────────────*/
+
+/* 1. 구글 폰트 불러오기 */
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@400;700&display=swap');
+
+/* 2. 컬러 변수 정의 */
+:root {
+  --bg: #FFF8E1;
+  --white: #FFFFFF;
+  --primary: #FFD54F;
+  --secondary: #FFB74D;
+  --accent: #4FC3F7;
+  --danger: #EF5350;
+  --text: #5D4037;
+  --border-light: #E0E0E0;
+}
+
+/* 3. 기본 리셋 및 공통 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
-  font-family: sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
   padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
-h1 {
-  margin-bottom: 20px;
+
+/*────────────────────────────────────────────────────────
+  A. 입력 페이지 (index.html) 스타일
+────────────────────────────────────────────────────────*/
+.blob {
+  position: absolute;
+  opacity: 0.6;
 }
-#groups-container .group-input {
-  margin-bottom: 8px;
+.blob1 {
+  width: 200px; height: 200px;
+  background: var(--primary);
+  border-radius: 60% 40% 70% 50%;
+  top: -50px; left: -50px;
 }
-.group-input input {
-  padding: 6px;
-  width: 200px;
+.blob2 {
+  width: 250px; height: 250px;
+  background: var(--secondary);
+  border-radius: 50% 60% 30% 50%;
+  bottom: -80px; right: -60px;
 }
-.group-input button.remove {
-  margin-left: 4px;
+.blob3 {
+  width: 150px; height: 150px;
+  background: var(--accent);
+  border-radius: 40% 50% 60% 40%;
+  top: 20%; right: -80px;
 }
-button {
-  padding: 8px 12px;
-  margin-right: 8px;
-  cursor: pointer;
-}
-#dashboard { display: grid; gap: 16px; }
-.group-box {
-  padding: 12px;
-  border-radius: 8px;
-  color: white;
+
+.wrapper {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 480px;
   text-align: center;
   position: relative;
+  z-index: 1;
 }
-.group-box h2 { margin: 0 0 8px; }
-.group-box .status { font-size: 1.4em; margin-bottom: 8px; }
-.group-box .time { font-size: 0.8em; color: rgba(255,255,255,0.8); }
+
+.wrapper h1 {
+  font-family: 'Jua', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+#refreshBtn {
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: transform 0.2s;
+}
+#refreshBtn:hover {
+  transform: translateY(-2px);
+}
+
+#groups-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.group-input {
+  display: flex;
+  gap: 8px;
+}
+.group-input input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+.group-input button.remove {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+#add-group {
+  background: var(--secondary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  flex: 1;
+}
+#create-dashboard {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  flex: 1;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/*────────────────────────────────────────────────────────
+  B. 대시보드 페이지 (dashboard.html) 스타일
+────────────────────────────────────────────────────────*/
+
+body.dashboard {
+  display: block;
+  padding: 20px;
+  overflow: auto;
+}
+
+/* 제목 */
+body.dashboard > h1 {
+  font-family: 'Jua', sans-serif;
+  font-size: 3rem; /* 더욱 크게 키움 */
+  text-align: center;
+  color: #914f34; /* 제목 색상 변경 */
+  margin-bottom: 24px;
+}
+
+/* 그리드 레이아웃 */
+#dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 0;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* 모둠 박스 */
+.group-box {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Jua', sans-serif; /* Jua 폰트 적용 */
+}
+
+/* 모둠 이름 */
+.group-box h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* 상태 */
+.group-box .status {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* QR 코드 */
+.group-box .qr {
+  margin: 8px 0;
+}
+
+/* 마지막 업데이트 시각 */
+.group-box .time {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+/*────────────────────────────────────────────────────────
+  반응형
+────────────────────────────────────────────────────────*/
+@media (max-width: 400px) {
+  .blob2 { display: none; }
+  .wrapper { padding: 20px; }
+  .buttons { flex-direction: column; }
+}

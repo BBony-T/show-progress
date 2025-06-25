@@ -2,17 +2,19 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>실시간 현황판</title>
+  <title>실시간 활동 현황판</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dashboard">
+  <!-- 상단 중앙 제목 -->
   <h1>실시간 활동 현황판</h1>
 
-  <!-- ① 새로고침 버튼 추가 -->
-  <button id="refreshBtn" style="margin-bottom:16px;">
-    🔄 새로고침
-  </button>
+  <!-- 새로고침 버튼 -->
+  <div class="controls">
+    <button id="refreshBtn">🔄 새로고침</button>
+  </div>
 
+  <!-- 모둠별 현황판 그리드 -->
   <div id="dashboard"></div>
 
   <!-- Firebase & QRCode 라이브러리 -->
@@ -20,7 +22,14 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
+  <!-- 새로고침 스크립트 -->
+  <script>
+    document.getElementById('refreshBtn')
+      .addEventListener('click', () => location.reload(true));
+  </script>
+
   <!-- 현황판 로직 -->
   <script src="dashboard.js"></script>
 </body>
 </html>
+

@@ -30,7 +30,7 @@ dashboard.style.gridTemplateColumns = `repeat(${Math.ceil(Math.sqrt(groups.lengt
 
 // 상태별 색상 매핑
 const statusColors = {
-  '시작': '#888',
+  '시작': '#FFFFFF',
   '토의중': '#f1c40f',
   '작업중': '#3498db',
   '도움 요청': '#e74c3c',
