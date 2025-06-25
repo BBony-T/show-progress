@@ -16,6 +16,7 @@
     <!-- 동적으로 그룹 이름이 들어갑니다 -->
     <h1 id="title">현황 알리기</h1>
 
+    <!-- 상태 업데이트 버튼들 -->
     <div id="buttons">
       <button data-status="시작">🚀 시작</button>
       <button data-status="토의중">🤔 토의중</button>
@@ -25,32 +26,40 @@
     </div>
   </div>
 
-  <!-- Firebase & 업데이트 로직 -->
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <!-- 업데이트 로직 -->
   <script>
-    // Firebase 설정
+    // 1) Firebase 설정 (Firebase 콘솔에서 복사 후 붙여넣기)
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
       databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-      projectId: "YOUR_PROJECT_ID",
+      projectId: "YOUR_PROJECT_ID"
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database().ref('currentActivity');
 
-    // 그룹 이름 추출 및 제목 변경
+    // 2) URL에서 'group' 파라미터 추출 및 검증
     const params = new URLSearchParams(location.search);
     const group = params.get('group');
+    if (!group) {
+      alert('잘못된 접근입니다. 대시보드에서 QR코드를 스캔해 주세요.');
+      throw new Error('Missing group parameter');
+    }
     document.getElementById('title').textContent = `${group} 현황 알리기`;
 
-    // 버튼 클릭 이벤트
+    // 3) 버튼 클릭 시 실시간 상태 업데이트
     document.querySelectorAll('#buttons button').forEach(btn => {
-      btn.onclick = () => {
+      btn.addEventListener('click', () => {
         const status = btn.getAttribute('data-status');
-        db.child(group).update({ status, lastUpdate: new Date().toISOString() });
-        alert(`현황이 '${status}'로 변경되었습니다!`);
-      };
+        console.log('🔘 클릭!', group, status);
+        db.child(group).update({ status, lastUpdate: new Date().toISOString() })
+          .then(() => console.log('✅ Firebase 업데이트 성공'))
+          .catch(err => console.error('❌ Firebase 업데이트 실패', err));
+      });
     });
   </script>
 </body>
